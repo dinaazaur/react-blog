@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.post-exit-active {
+  animation: post 800ms ease-in-out forwards;
+}
+
+.post-enter-active {
+  animation: post 800ms ease-in-out alternate-reverse;
+}
+
+@keyframes post {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: .7;
+    transform: translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+}
+
+.post-enter {
+  opacity: 0;
+}
