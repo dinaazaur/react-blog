@@ -1,18 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import Grid from "@material-ui/core/Grid"
 import Post from "../post"
 import {CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from "react-redux"
-import { postsLoadingSelector, postsSelector } from "../../selectors"
+import { postsLoadingSelector } from "../../selectors"
 import { fetchPosts } from "../../ac"
 import { withBlogService, withErrorBoundary } from "../hoc"
 import { compose } from "../../utis"
 import Loader from "../loader"
-import { postsListSelector } from "../../selectors/selectors"
+import { filtratedPosts } from "../../selectors/selectors"
 
-const PostsList = ({ posts, loading, fetchData }) => {
+const PostsList = ({ posts, loading, fetchData, blogService }) => {
   useEffect(() => {
-    fetchData()
+    fetchData(blogService)
   }, [])
   if (loading) return <Loader />
 
@@ -32,7 +33,7 @@ const PostsList = ({ posts, loading, fetchData }) => {
 
 export default compose(
   connect(state =>
-      ({ posts: postsListSelector(state), loading: postsLoadingSelector(state) }),
+      ({ posts: filtratedPosts(state), loading: postsLoadingSelector(state) }),
       ({ fetchData: fetchPosts })),
   withErrorBoundary,
   withBlogService, )(

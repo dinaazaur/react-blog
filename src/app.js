@@ -3,14 +3,14 @@ import IncrementTest from "./components/increment-test"
 import Header from "./components/header"
 import Main from "./components/main"
 import './index.scss'
-import CommentsForm from "./components/comments-form"
+import { Route } from 'react-router-dom'
 
 const App = () => {
   return (
     <Fragment>
       <Header />
-      <Main />
-      <IncrementTest />
+        <Route path="/" component={Main}/>
+        <Route path="/counter" component={IncrementTest} />
     </Fragment>
   )
 }

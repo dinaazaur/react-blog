@@ -4,14 +4,19 @@ body {
 }
 
 
-.post-exit-active {
+.post-exit-active,
+.comment-exit-active {
   animation: post 800ms ease-in-out forwards;
 }
 
-.post-enter-active {
+.post-enter-active,
+.comment-enter-active {
   animation: post 800ms ease-in-out alternate-reverse;
 }
 
+.post-enter, .comment-enter {
+  opacity: 0;
+}
 @keyframes post {
   0% {
     transform: translateX(0);
@@ -28,6 +33,16 @@ body {
   }
 }
 
-.post-enter {
+.comments-enter {
+  opacity: 0
+}
+
+.comments-enter-active {
+  transition: opacity 500ms ease-out;
+  opacity: 1
+}
+
+.comments-exit-active {
+  transition: opacity 300ms ease-out;
   opacity: 0;
 }

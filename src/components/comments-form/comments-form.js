@@ -3,42 +3,16 @@ import { makeStyles } from "@material-ui/core"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import { connect } from "react-redux"
+import { addPatchComment } from "../../ac"
 
-const useStyles = makeStyles(theme =>({
-  root: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexBasis: "100%",
-    flexWrap: "wrap",
-    alignItems: "center"
-  },
-  inputsWrapper: {
-    flexBasis: "80%",
-  },
-  inputs: {
-    marginRight: theme.spacing(2),
-    width: "250px"
-  },
-  button: {
-    flexBasis: "10%"
-  },
-  comment: {
-    flexBasis: "100%"
-  }
-}))
 
-const CommentsForm = ({ onSubmit }) => {
+const CommentsForm = ({ onSubmit, postId, blogService, commentsOptions = false, commentId = null }) => {
   const classes = useStyles()
-  const [nameField, setNameField] = useState('')
-  const [textField, setTextField] = useState('')
-  const [commentField, setCommentField] = useState('')
+  const [nameField, setNameField] = useState(commentsOptions ? commentsOptions.name : '')
+  const [textField, setTextField] = useState(commentsOptions ? commentsOptions.title : '')
+  const [commentField, setCommentField] = useState(commentsOptions ? commentsOptions.comment : '')
   const [inputSize] = useState({ min: 10, max:30 })
   const [commentSize] = useState({ min: 10, max: 300 })
-
   const handleChange = (e) => {
     if(e.target.id === 'name') {
       setNameField(e.target.value)
@@ -49,8 +23,17 @@ const CommentsForm = ({ onSubmit }) => {
     }
   }
 
-  const handleSubmit = () => {
-
+  const handleSubmit = e => {
+    e.preventDefault()
+    onSubmit(blogService, {
+      author: nameField,
+      title: textField,
+      text: commentField,
+      postId
+    }, postId, commentsOptions, commentId)
+    setNameField(() => '')
+    setTextField(() => '')
+    setCommentField(() => '')
   }
 
   const handleValidate = () =>
@@ -98,7 +81,7 @@ const CommentsForm = ({ onSubmit }) => {
       </div>
       <TextField
         className={classes.comment}
-        placeholder="comment"
+        placeholder="text here..."
         multiline={true}
         rows={5}
         onChange={ handleChange }
@@ -110,6 +93,35 @@ const CommentsForm = ({ onSubmit }) => {
   )
 }
 
+const useStyles = makeStyles(theme =>({
+  root: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  container: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexBasis: "100%",
+    flexWrap: "wrap",
+    alignItems: "center"
+  },
+  inputsWrapper: {
+    flexBasis: "80%",
+  },
+  inputs: {
+    marginRight: theme.spacing(2),
+    width: "250px"
+  },
+  button: {
+    flexBasis: "10%"
+  },
+  comment: {
+    flexBasis: "100%"
+  }
+}))
+
+
 export default connect(
-  state => ({  })
+  null,
+  { onSubmit: addPatchComment }
 )(CommentsForm)

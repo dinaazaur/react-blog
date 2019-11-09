@@ -1,7 +1,19 @@
-import { fetchPosts, fetchDeletePost, fetchComments } from "./action-creators"
+import {
+  fetchPosts,
+  fetchDeleteItem,
+  fetchComments,
+  changeSelection,
+  addPatchComment,
+  onFilterDateChange,
+  setEditable
+} from "./action-creators"
 
 export {
   fetchPosts,
-  fetchDeletePost,
-  fetchComments
+  fetchDeleteItem,
+  fetchComments,
+  changeSelection,
+  addPatchComment,
+  onFilterDateChange,
+  setEditable
 }

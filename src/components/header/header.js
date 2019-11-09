@@ -1,80 +1,87 @@
-import React, { useState } from 'react'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
+import React  from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Select from 'react-select'
+import { connect } from "react-redux"
+import { postsListSelector, selectedSelector } from "../../selectors"
+import { changeSelection } from "../../ac"
+import { NavLink } from 'react-router-dom'
+import { Add as AddIcon } from "@material-ui/icons"
+import Button from "@material-ui/core/Button"
+
 const useStyles = makeStyles(theme => ({
+  root: {
+    justifyContent: "space-between"
+  },
   title: {
-    flexGrow: 1,
+    textDecoration: 'none',
+    color: 'inherit',
+    marginRight: '50px'
+  },
+  pos: {
+    position: "initial"
+  },
+  wrapper:  {
+    display: "flex",
+    alignItems: "center"
   },
   search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
+    width: '300px ',
+    color: 'black',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 300,
-      },
-    },
   },
-}));
+}))
 
-export default function Header() {
-  const classes = useStyles();
-  const [search, setSearch] = useState('')
+const Header = ({ posts, onSelect, selected }) => {
+  const classes = useStyles()
+  const options = () => {
+    return posts.map(({ id, title }) => ({
+      value: id,
+      label: title
+    }))
+  }
+  const handleSelect = (selected) => {
+    onSelect(selected)
+  }
+
   return (
-    <header className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Some awesome blog
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+    <header>
+      <AppBar className={classes.pos}>
+        <Toolbar className={classes.root}>
+          <div className={classes.wrapper}>
+            <Typography className={ classes.title } component={NavLink} to="/"  variant="h6" noWrap>
+              Some awesome blog
+            </Typography>
+              <Select
+                className={classes.search}
+                options={ options() }
+                value={ selected }
+                isClearable
+                onChange={ handleSelect }
+                placeholder="Search…"
+                classes={{
+                  input: classes.inputInput,
+                }}
+              />
+
           </div>
+          <Button  variant="contained">
+            Add post <AddIcon />
+          </Button>
         </Toolbar>
       </AppBar>
     </header>
-  );
+  )
 }
+
+export default connect(
+  state => ({
+    posts: postsListSelector(state),
+    selected: selectedSelector(state)
+  }),
+  { onSelect: changeSelection }
+)(Header)

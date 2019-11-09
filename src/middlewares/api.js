@@ -1,31 +1,27 @@
-import BlogService from "../blog-service"
 import { _FAILURE, _REQUEST, _SUCCESS } from "../constants"
 
-const blogService = new BlogService()
 
 export const api = store => next => action => {
-  const { dispatch, ...rest } = store
-  const { callAPI, type } = action
-  if (!callAPI) return next(action)
+  const { dispatch} = store
+  const { callAPI, additionAPI, type, payload, data, blogService, serviceRequest, comments } = action
 
+  if (!callAPI) return next(action)
   dispatch({
     type: type + _REQUEST,
     loading: true,
-    rest
+    payload,
   })
 
-  blogService.get(callAPI)
-    .then(res => {
-      dispatch({
+  blogService[serviceRequest](callAPI, additionAPI)
+    .then(res => dispatch({
         type: type + _SUCCESS,
-        posts: res.data,
-        rest
-      })
-    })
-    .catch(e => {
+        payload,
+        [data]: res.data,
+        [data ? null : 'comments']: comments
+      }))
+    .catch(() => {
       dispatch({
         type: type + _FAILURE,
-        rest
       })
     })
 

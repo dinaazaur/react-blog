@@ -1,6 +1,6 @@
 import axios from "axios"
-import faker from 'faker'
 import * as uuid from "uuid"
+import faker from 'faker'
 
 const author = `${faker.name.firstName()} ${faker.name.lastName()}`
 const title = faker.lorem.words()

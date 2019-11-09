@@ -1,46 +1,95 @@
-import { _FAILURE, _REQUEST, _SUCCESS, FETCH_COMMENTS, FETCH_POST_DELETE, FETCH_POSTS } from "../constants"
+import {
+  CHANGE_SELECTION,
+  FETCH_COMMENTS,
+  FETCH_POST_DELETE,
+  FETCH_POSTS,
+  ADD_COMMENT, CHANGE_DAY_RANGE,
+  FETCH_COMMENT_DELETE,
+  SET_EDITABLE,
+  EDIT_COMMENT,
+  FETCH_ADD_POST
+} from "../constants"
+import uuid from 'uuid'
 
-
-export const fetchPosts = () => ({
-  type: FETCH_POSTS,
-  callAPI: 'posts'
+export const onFilterDateChange = (range) => ({
+  type: CHANGE_DAY_RANGE,
+  payload: { range }
 })
 
+export const setEditable = (commentId) => ({
+  type: SET_EDITABLE,
+  payload: { commentId }
+})
 
-export const fetchDeletePost = (blogService, id) => dispatch => {
-  blogService.delete(/*`posts/${id}`*/'dummyDelete')  // todo Dummy delete, change to real
-    .catch(e =>
-      dispatch({
-        type: FETCH_POST_DELETE + _FAILURE,
-        hasError: true
-      }))
+export const changeSelection = (selected) => ({
+  type: CHANGE_SELECTION,
+  payload: { selected }
+})
 
+export const fetchPosts = (blogService) => ({
+  type: FETCH_POSTS,
+  callAPI: 'posts',
+  blogService,
+  data: 'posts',
+  serviceRequest: 'get'
+})
+
+export const fetchComments = (blogService, postId) => ({
+  type: FETCH_COMMENTS,
+  callAPI: postId,
+  blogService,
+  data: 'comments',
+  serviceRequest: 'getComments',
+  payload: { postId },
+})
+
+export const fetchDeleteItem = (blogService, id, postId = null, type = 'post', comments = null) => dispatch => {
   dispatch({
-    type: FETCH_POST_DELETE,
-    payload: { id }
+    type: type === 'post' ? FETCH_POST_DELETE : FETCH_COMMENT_DELETE,
+    payload: { id, postId },
+    serviceRequest: 'delete',
+    callAPI: `${type}/${id}`,
+    blogService,
   })
+
+  if (comments) {
+    blogService.addCommentIdToPost(postId, comments.filter(comment => comment !== id))
+      .catch(e => console.log('---', e.message))
+  }
 }
 
-export const fetchComments = (blogService, postId) => dispatch => {
+const createBody = (body, id, patch) => {
+  return !patch ? {
+    ...body,
+    id,
+    date: new Date()
+  } : { ...body }
+}
+
+const addCommentIdToToPost = (getState, postId, randomId, blogService) => {
+  const commentsIds = getState().blogPosts.getIn(['entities', postId, 'comments'])
+  commentsIds.push(randomId)
+  blogService.addCommentIdToPost(postId,commentsIds)
+    .catch(e => console.log(e.message))
+}
+
+export const addPatchComment = (blogService, body, postId, patch, patchCommentId) => (dispatch, getState) => {
+  const type = patch ? EDIT_COMMENT : ADD_COMMENT
+  const randomId = uuid.v4()
+
+  const bodyWithGeneratedId = createBody(body, randomId, patch)
   dispatch({
-    type: FETCH_COMMENTS + _REQUEST,
-    payload: { postId },
+    type: type,
+    payload: { postId, patchCommentId },
+    comments: patch ? bodyWithGeneratedId : [bodyWithGeneratedId],
+    serviceRequest: patch ? 'patchComment' : 'postComment',
+    callAPI: bodyWithGeneratedId,
+    blogService,
+    additionAPI: patchCommentId
   })
-  blogService.getComments(postId)
-    .then(res => {
-      const comments = res.data
-      dispatch({
-        type: FETCH_COMMENTS + _SUCCESS,
-        payload: { postId },
-        comments
-      })
-    })
-    .catch(e => {
-      dispatch({
-        type: FETCH_COMMENTS + _FAILURE,
-        payload: { postId },
-        hasError: true
-      })
-    })
+
+  if (!patch) {
+    addCommentIdToToPost(getState, postId, randomId, blogService)
+  }
 }
 

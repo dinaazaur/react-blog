@@ -5,21 +5,33 @@ import { compose } from "../../utis"
 import { connect } from "react-redux"
 import { commentsListSelector } from "../../selectors"
 import { withErrorBoundary } from "../hoc"
+import CommentsForm from "../comments-form/comments-form"
 
 
-const Comment = ({ comment = {} }) => (
-  <Fragment>
-    <Typography component='h3' variant={ "h5" } color={ "textPrimary" } align={ "center" }>
-      { comment.title }
-    </Typography>
-    <Typography component="p">
-      { comment.text }
-    </Typography>
-    <Typography component='p' color={ "textSecondary" } align={ "right" }>
-      { comment.author }
-    </Typography>
-  </Fragment>
-)
+
+const Comment = ({ comment = {}, postId, id, blogService }) => {
+  if (comment.editable) return (
+    <CommentsForm blogService={blogService} commentId={id} postId={postId} commentsOptions={{
+      title: comment.title,
+      comment: comment.text,
+      name: comment.author
+    }}/>
+  )
+
+  return (
+    <Fragment>
+      <Typography component='h3' variant={ "h5" } color={ "textPrimary" } align={ "center" }>
+        { comment.title }
+      </Typography>
+      <Typography component="p">
+        { comment.text }
+      </Typography>
+      <Typography component='p' color={ "textSecondary" } align={ "right" }>
+        { comment.author }
+      </Typography>
+    </Fragment>
+  )
+}
 
 
 Comment.propTypes = {
@@ -28,7 +40,9 @@ Comment.propTypes = {
 
 export default compose(
   connect(
-    (state, ownProps) => ({ comment: commentsListSelector(state, ownProps) })
+    (state, ownProps) => ({
+      comment: commentsListSelector(state, ownProps),
+    })
   ),
   withErrorBoundary,
   memo

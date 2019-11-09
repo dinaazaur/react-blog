@@ -11,8 +11,9 @@ import Paper from "@material-ui/core/Paper"
 import { connect } from "react-redux"
 import { compose } from "../../utis"
 import { withBlogService, withErrorBoundary } from "../hoc"
-import { fetchDeletePost } from "../../ac"
+import { fetchDeleteItem } from "../../ac"
 import CommentsList from "../comments-list"
+import { CSSTransition } from "react-transition-group"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -81,11 +82,20 @@ const Post = ({ post, deletePost, blogService }) => {
             Open Comments
           </Button>
         </div>
-        {
-          isOpenComments ? <CommentsList id={ post.id } loading={ post.commentsLoading } comments={ post.comments }
-                                         loaded={ post.commentsLoaded }
-                                         isOpen={ isOpenComments }/> : null
-        }
+        <CSSTransition
+          in={ isOpenComments }
+          classNames={ 'comments' }
+          mountOnEnter
+          unmountOnExit
+          timeout={{enter: 500, exit: 300}}
+        >
+          <CommentsList
+            id={ post.id } loading={ post.commentsLoading }
+            comments={ post.comments }
+            loaded={ post.commentsLoaded }
+            isOpen={ isOpenComments }/>
+        </CSSTransition>
+
       </Paper>
     </Grid>
   )
@@ -98,7 +108,7 @@ Post.propTypes = {
 export default compose(
   connect(
     null,
-    ({ deletePost: fetchDeletePost })
+    ({ deletePost: fetchDeleteItem })
   ),
   withErrorBoundary,
   withBlogService)(
