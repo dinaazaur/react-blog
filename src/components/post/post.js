@@ -11,9 +11,10 @@ import Paper from "@material-ui/core/Paper"
 import { connect } from "react-redux"
 import { compose } from "../../utis"
 import { withBlogService, withErrorBoundary } from "../hoc"
-import { fetchDeleteItem } from "../../ac"
+import { fetchDeleteItem, setEditablePost } from "../../ac"
 import CommentsList from "../comments-list"
 import { CSSTransition } from "react-transition-group"
+import { withRouter } from "react-browser-router"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,12 +29,17 @@ const useStyles = makeStyles(theme => ({
   },
   commentsBtn: {
     display: 'flex',
-    justifyContent: "flex-end"
+    justifyContent: "space-between"
+  },
+  readMoreLink: {
+    textDecoration: "none",
+    color: "#f00"
   }
 }))
 
-const Post = ({ post, deletePost, blogService }) => {
-  const { title, author, text, id } = post
+const Post = ({ post, singlePost = false, deletePost, blogService, history, editPost }) => {
+  const pointedPost = singlePost ? singlePost : post
+  const { title, author, text, id } = singlePost ? singlePost : post
   const [isOpenComments, setOpenComments] = useState(false)
   const titleCapitalize = title[0].toUpperCase() + title.slice(1)
   const classes = useStyles()
@@ -44,6 +50,16 @@ const Post = ({ post, deletePost, blogService }) => {
   const handleDelete = () => {
     deletePost(blogService, id)
   }
+
+  const handleViewPost = () => {
+    history.push(`/posts/${ id }`)
+  }
+
+  const handleEdit = () => {
+    history.push(`/posts/${ id }`)
+    editPost()
+  }
+
   return (
     <Grid item xs={ 6 } md={ 12 } className={ classes.root }>
       <Paper className={ classes.container }>
@@ -63,7 +79,13 @@ const Post = ({ post, deletePost, blogService }) => {
             >
               <DeleteIcon/>
             </Fab>
-            <Fab size="small" className={ classes.button } color="primary" aria-label="edit">
+            <Fab
+              onClick={ handleEdit }
+              size="small"
+              className={ classes.button }
+              color="primary"
+              aria-label="edit"
+            >
               <EditIcon/>
             </Fab>
           </Grid>
@@ -75,6 +97,9 @@ const Post = ({ post, deletePost, blogService }) => {
           { text }
         </Typography>
         <div className={ classes.commentsBtn }>
+          { !singlePost && <Button onClick={ () => handleViewPost() } className={ classes.readMoreLink }>
+            Read more...
+          </Button> }
           <Button
             onClick={ handleClickComments }
             variant="outlined"
@@ -87,13 +112,14 @@ const Post = ({ post, deletePost, blogService }) => {
           classNames={ 'comments' }
           mountOnEnter
           unmountOnExit
-          timeout={{enter: 500, exit: 300}}
+          timeout={ { enter: 500, exit: 300 } }
         >
           <CommentsList
-            id={ post.id } loading={ post.commentsLoading }
-            comments={ post.comments }
-            loaded={ post.commentsLoaded }
-            isOpen={ isOpenComments }/>
+            id={ pointedPost.id } loading={ pointedPost.commentsLoading }
+            comments={ pointedPost.comments }
+            loaded={ pointedPost.commentsLoaded }
+            isOpen={ isOpenComments }
+          />
         </CSSTransition>
 
       </Paper>
@@ -102,14 +128,15 @@ const Post = ({ post, deletePost, blogService }) => {
 }
 
 Post.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.object
 }
 
 export default compose(
   connect(
     null,
-    ({ deletePost: fetchDeleteItem })
+    ({ deletePost: fetchDeleteItem, editPost: setEditablePost })
   ),
   withErrorBoundary,
+  withRouter,
   withBlogService)(
   Post)

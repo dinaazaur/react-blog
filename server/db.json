@@ -2,12 +2,15 @@
   "posts": [
     {
       "title": "minus vero qui",
-      "text": "Voluptas ipsa cupiditate quia eos aut amet et corrupti. Qui aperiam rerum porro aut quia aut enim consequatur minima. Voluptas dolores officia voluptatum. Necessitatibus harum non voluptatem. Similique iure dolor sed.",
+      "text": "Voluptas ipsa cupiditate quia eos aut amet et corrupti. Qui aperiam rerum porro aut quia aut enim consequatur minima. Voluptas dolores officia voluptatum. Necessitatibus harum non voluptatem. Similique iure dolor sed.!!!",
       "author": "Rudy Rogahn",
       "id": "c860157e-3b69-468a-994a-d69c876eba77",
       "comments": [
-        "dc972d12-8626-44a4-89a5-3946be753aa4"
-      ]
+        "1878e108-21a7-4fc5-84b3-db8125374f82",
+        "d74606d5-aaa6-4318-8378-37271649c3ae"
+      ],
+      "date": "2019-11-10T21:19:43.496Z",
+      "category": "Back-End"
     },
     {
       "title": "cumque officiis dolore",
@@ -29,6 +32,15 @@
         "1d451bc3-937b-47c3-9a83-9b273bc2bb8d",
         "cad2ce2a-6745-4a47-b1c6-f79d3be7cd5a"
       ]
+    },
+    {
+      "author": "Doem",
+      "title": "Dreoe",
+      "text": "DWadwad",
+      "date": "2019-11-10T21:47:35.642Z",
+      "category": "Front-End",
+      "id": "e7b381b9-0215-41bc-90cd-749f27a752e3",
+      "comments": []
     }
   ],
   "comments": [
@@ -76,8 +88,8 @@
       "date": "2019-11-08T13:08:59.219Z"
     },
     {
-      "author": "Dude Markudeee!!!!",
-      "title": "Fuck My life Bitches!!!!",
+      "author": "Dude Markudeee",
+      "title": "Fuck My life Bitche",
       "text": "Dude why are you so stupid",
       "postId": "c860157e-3b69-468a-994a-d69c876eba77",
       "id": "dc972d12-8626-44a4-89a5-3946be753aa4",
@@ -120,7 +132,35 @@
       "postId": "c860157e-3b69-468a-994a-d69c876eba77",
       "id": "d6f580e6-57b2-4f16-93d2-4bdb312ff430",
       "date": "2019-11-08T21:08:42.541Z"
+    },
+    {
+      "author": "Dred Mord Ded",
+      "title": "Trulala Da",
+      "text": "Dade oe ",
+      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
+      "id": "d1872e9b-3f11-48fd-a33d-9c6b7eb5b4d1",
+      "date": "2019-11-10T13:18:35.802Z"
+    },
+    {
+      "author": "Dredomon",
+      "title": "Trulala Da",
+      "text": "Lorem dorem",
+      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
+      "id": "1878e108-21a7-4fc5-84b3-db8125374f82",
+      "date": "2019-11-10T21:48:25.652Z"
+    },
+    {
+      "author": "Dude Markude",
+      "title": "Trulala Da",
+      "text": "Droed",
+      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
+      "id": "d74606d5-aaa6-4318-8378-37271649c3ae",
+      "date": "2019-11-10T21:49:32.373Z"
     }
+  ],
+  "categories": [
+    "Front-End",
+    "Back-End"
   ],
   "profile": {
     "name": "typicode"

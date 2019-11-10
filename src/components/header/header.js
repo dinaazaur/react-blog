@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   pos: {
     position: "initial"
   },
-  wrapper:  {
+  wrapper: {
     display: "flex",
     alignItems: "center"
   },
@@ -31,9 +31,20 @@ const useStyles = makeStyles(theme => ({
     width: '300px ',
     color: 'black',
   },
+  add: {
+    textDecoration: 'none'
+  },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
   },
+  categoryLink: {
+    color: 'white',
+    textDecoration: "none",
+  },
+  categoryBtn: {
+    fontSize: "1.1rem",
+    marginLeft: theme.spacing(9)
+  }
 }))
 
 const Header = ({ posts, onSelect, selected }) => {
@@ -50,28 +61,34 @@ const Header = ({ posts, onSelect, selected }) => {
 
   return (
     <header>
-      <AppBar className={classes.pos}>
-        <Toolbar className={classes.root}>
-          <div className={classes.wrapper}>
-            <Typography className={ classes.title } component={NavLink} to="/"  variant="h6" noWrap>
+      <AppBar className={ classes.pos }>
+        <Toolbar className={ classes.root }>
+          <div className={ classes.wrapper }>
+            <Typography className={ classes.title } component={ NavLink } to="/" variant="h6" noWrap>
               Some awesome blog
             </Typography>
-              <Select
-                className={classes.search}
-                options={ options() }
-                value={ selected }
-                isClearable
-                onChange={ handleSelect }
-                placeholder="Search…"
-                classes={{
-                  input: classes.inputInput,
-                }}
-              />
-
-          </div>
-          <Button  variant="contained">
-            Add post <AddIcon />
+            <Select
+              className={ classes.search }
+              options={ options() }
+              value={ selected }
+              isClearable
+              onChange={ handleSelect }
+              placeholder="Search…"
+              classes={ {
+                input: classes.inputInput,
+              } }
+            />
+          <Button className={ classes.categoryBtn } variant="outlined">
+            <NavLink to='/categories' className={ classes.categoryLink }>Categories</NavLink>
           </Button>
+          </div>
+          <NavLink to='/add' className={ classes.add }>
+          <Button variant="contained">
+
+              Add post
+              <AddIcon/>
+          </Button>
+            </NavLink>
         </Toolbar>
       </AppBar>
     </header>

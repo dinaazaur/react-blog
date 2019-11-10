@@ -5,7 +5,15 @@ import {
   changeSelection,
   addPatchComment,
   onFilterDateChange,
-  setEditable
+  setEditable,
+  addPatchPost,
+  fetchCategories,
+  selectedCategory,
+  fetchPost,
+  addSingleLoadedPost,
+  fetchFiltratedPosts,
+  addLoadedCategory,
+  setEditablePost
 } from "./action-creators"
 
 export {
@@ -15,5 +23,13 @@ export {
   changeSelection,
   addPatchComment,
   onFilterDateChange,
-  setEditable
+  setEditable,
+  addPatchPost,
+  fetchCategories,
+  selectedCategory,
+  fetchPost,
+  addSingleLoadedPost,
+  fetchFiltratedPosts,
+  addLoadedCategory,
+  setEditablePost
 }

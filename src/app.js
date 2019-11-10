@@ -1,18 +1,38 @@
-import React, { Fragment } from 'react'
-import IncrementTest from "./components/increment-test"
+import React, { Fragment, useEffect } from 'react'
 import Header from "./components/header"
 import Main from "./components/main"
 import './index.scss'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import Form from './components/form'
+import { withBlogService } from "./components/hoc"
+import { connect } from "react-redux"
+import { fetchCategories } from "./ac"
+import Categories from './components/categories'
+import PostPage from "./components/post-page"
+import { postsLoadedSelector } from "./selectors"
+import PostsPage from "./components/posts-page/posts-page"
 
-const App = () => {
+const App = ({ blogService, initialFetch, loaded }) => {
+  useEffect(() => {
+    initialFetch(blogService)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaded])
   return (
     <Fragment>
-      <Header />
-        <Route path="/" component={Main}/>
-        <Route path="/counter" component={IncrementTest} />
+      <Header/>
+      <Switch>
+        <Route path="/" exact component={ Main }/>
+        <Route path='/add' render={ () => <Form postForm/> }/>
+        <Route path='/categories' component={ Categories }/>
+        <Route path='/posts' exact component={ PostsPage }/>
+        <Route path='/posts/:id' component={ PostPage }/>
+        <Route render={ () => <h2>404 page not found</h2> }/>
+      </Switch>
     </Fragment>
   )
 }
 
-export default App
+
+export default connect(state => ({ loaded: postsLoadedSelector(state) }),
+  { initialFetch: fetchCategories })(
+  withBlogService(App))

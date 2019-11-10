@@ -6,7 +6,19 @@ import {
   commentsIdSelector,
   postsListSelector,
   commentsSelector,
-  selectedSelector
+  selectedSelector,
+  filtratedPostsByCategory,
+  categoriesLoadingSelector,
+  postSelector,
+  postIdSelector,
+  categoriesSelector,
+  editableSelector,
+  filtratedPosts,
+  selectedCategorySelector,
+  loadedSinglePostSelector,
+  postsLoadedSelector,
+  categoriesLoadedSelector,
+  postsEditableSelector
 } from './selectors'
 
 export {
@@ -18,4 +30,16 @@ export {
   postsListSelector,
   commentsIdSelector,
   commentsListSelector,
+  filtratedPostsByCategory,
+  categoriesLoadingSelector,
+  postSelector,
+  postIdSelector,
+  categoriesSelector,
+  editableSelector,
+  filtratedPosts,
+  selectedCategorySelector,
+  loadedSinglePostSelector,
+  postsLoadedSelector,
+  categoriesLoadedSelector,
+  postsEditableSelector
 }

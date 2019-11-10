@@ -5,17 +5,15 @@ import { compose } from "../../utis"
 import { connect } from "react-redux"
 import { commentsListSelector } from "../../selectors"
 import { withErrorBoundary } from "../hoc"
-import CommentsForm from "../comments-form/comments-form"
+import CommentsForm from "../form/form"
 
-
-
-const Comment = ({ comment = {}, postId, id, blogService }) => {
+const Comment = ({ comment = {}, postId, id }) => {
   if (comment.editable) return (
-    <CommentsForm blogService={blogService} commentId={id} postId={postId} commentsOptions={{
+    <CommentsForm commentId={ id } postId={ postId } itemOptions={ {
       title: comment.title,
-      comment: comment.text,
+      text: comment.text,
       name: comment.author
-    }}/>
+    } }/>
   )
 
   return (
@@ -33,9 +31,9 @@ const Comment = ({ comment = {}, postId, id, blogService }) => {
   )
 }
 
-
 Comment.propTypes = {
-  comment: PropTypes.object
+  comment: PropTypes.object,
+  postId: PropTypes.string
 }
 
 export default compose(

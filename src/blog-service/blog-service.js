@@ -2,54 +2,75 @@ import axios from "axios"
 
 export default class BlogService {
   _allPost = 'comments?postId=';
-
+  _categorizedPosts = 'posts?category='
+  _post = 'posts?id='
+  _serverURL = 'http://localhost:3001/'
   get = async (url) => {
     try {
-      return await axios.get(`http://localhost:3001/${url}`)
+      return await axios.get(`${this._serverURL}${url}`)
     } catch (e) {
-      console.log('---', e.message)
+      this.message(e)
+    }
+  }
+
+  getPost = async (id) => {
+    try {
+      return await axios.get(`${this._serverURL}${this._post}${id}`)
+    } catch (e) {
+      this.message(e)
     }
   }
 
   delete = async (id) => {
     try {
-      return await axios.delete(`http://localhost:3001/${id}`)
+      return await axios.delete(`${this._serverURL}${id}`)
     } catch (e) {
-      console.log('---', e.message)
+      this.message(e)
     }
   }
 
   getComments = async (id) => {
     try {
-      return await axios.get(`http://localhost:3001/${this._allPost}${id}`)
+      return await axios.get(`${this._serverURL}${this._allPost}${id}`)
     } catch (e) {
-      console.log('---', e.message)
+      this.message(e)
     }
   }
 
   addCommentIdToPost = async (id, body) => {
     try {
-      return await axios.patch(`http://localhost:3001/posts/${id}`, { comments: body })
+      return await axios.patch(`${this._serverURL}posts/${id}`, { comments: body })
 
     } catch (e) {
-      console.log('---', e.message)
+      this.message(e)
     }
   }
 
-  patchComment = async (id, body) => {
+  patchItem = async (id, body, data) => {
     try {
-      return await axios.patch(`http://localhost:3001/comments/${id}`, body)
+      return await axios.patch(`${this._serverURL}${data}/${id}`, body)
     } catch (e) {
-      console.log('---', e.message)
+      this.message(e)
     }
   }
 
-  postComment = async (body) => {
+  postItem = async (body, _, data) => {
     try {
-      console.log('---', body)
-      return await axios.post('http://localhost:3001/comments', body)
+      return await axios.post(`${this._serverURL}${data}`, body)
     } catch (e) {
-      console.log('---', e.message)
+      this.message(e)
     }
+  }
+
+  getCategorizedPosts = async (category) => {
+    try {
+      return await axios.get(`${this._categorizedPosts}${category}`)
+    } catch (e) {
+      this.message(e)
+    }
+  }
+
+  message(e) {
+    console.log('---', e)
   }
 }

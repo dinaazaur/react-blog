@@ -6,7 +6,7 @@ import { compose } from "../../utis"
 import { connect } from "react-redux"
 import { fetchComments, fetchDeleteItem } from "../../ac/action-creators"
 import { withBlogService, withErrorBoundary } from "../hoc"
-import CommentsForm from "../comments-form/comments-form"
+import CommentsForm from "../form/form"
 import IconButton from "@material-ui/core/IconButton"
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
@@ -49,13 +49,12 @@ const CommentsList = ({ isOpen, loadPostComments, id, blogService,
   }) : <p>sorry no comments yet</p>
 
   const visibleContent = loading ? <Loader/> : content
-
   return (
     <div>
       {
         visibleContent
       }
-      { editable ? null : <CommentsForm postId={ id } blogService={ blogService }/> }
+      { editable ? null : <CommentsForm postId={ id }/> }
     </div>
   )
 }

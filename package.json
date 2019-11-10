@@ -13,6 +13,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-browser-router": "^2.1.2",
+    "react-datepicker": "^2.9.6",
     "react-day-picker": "^7.4.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
