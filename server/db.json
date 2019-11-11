@@ -5,10 +5,7 @@
       "text": "Voluptas ipsa cupiditate quia eos aut amet et corrupti. Qui aperiam rerum porro aut quia aut enim consequatur minima. Voluptas dolores officia voluptatum. Necessitatibus harum non voluptatem. Similique iure dolor sed.!!!",
       "author": "Rudy Rogahn",
       "id": "c860157e-3b69-468a-994a-d69c876eba77",
-      "comments": [
-        "1878e108-21a7-4fc5-84b3-db8125374f82",
-        "d74606d5-aaa6-4318-8378-37271649c3ae"
-      ],
+      "comments": [],
       "date": "2019-11-10T21:19:43.496Z",
       "category": "Back-End"
     },
@@ -17,18 +14,21 @@
       "text": "A eius voluptatum qui rerum aut tenetur id atque. Voluptas consequatur eaque. Quasi eos illo occaecati voluptas a ut sed. Culpa eligendi sint velit asperiores temporibus et nobis. Vitae molestias deleniti quod accusamus itaque dolores. Iure qui error eligendi recusandae non sit.",
       "author": "Brad Hammes",
       "id": "ee83a5ed-f2cd-461c-b125-d9cd51429487",
-      "comments": [],
-      "date": "2019-11-11T05:41:44.239Z",
-      "category": "Front-End"
+      "comments": [
+        "58dfe534-4011-4872-9387-86bf02dcb436",
+        "656efac4-295a-4c36-91aa-5a1175f4234f",
+        "5bf04030-1148-4945-b166-d79336e278c9"
+      ]
     },
     {
       "title": "laboriosam qui facilis",
       "text": "Error placeat dolor. Alias quisquam velit. Perferendis ipsa ea laboriosam.",
       "author": "Emery West",
       "id": "2fe69cfd-73ce-42ff-b6bc-f1ba62126643",
-      "comments": [],
-      "date": "2019-11-11T05:41:39.416Z",
-      "category": "Back-End"
+      "comments": [
+        "1d451bc3-937b-47c3-9a83-9b273bc2bb8d",
+        "cad2ce2a-6745-4a47-b1c6-f79d3be7cd5a"
+      ]
     },
     {
       "author": "Doem",
@@ -137,22 +137,6 @@
       "postId": "c860157e-3b69-468a-994a-d69c876eba77",
       "id": "d1872e9b-3f11-48fd-a33d-9c6b7eb5b4d1",
       "date": "2019-11-10T13:18:35.802Z"
-    },
-    {
-      "author": "Dredomon",
-      "title": "Trulala Da",
-      "text": "Lorem dorem",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "1878e108-21a7-4fc5-84b3-db8125374f82",
-      "date": "2019-11-10T21:48:25.652Z"
-    },
-    {
-      "author": "Dude Markude",
-      "title": "Trulala Da",
-      "text": "Droed",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "d74606d5-aaa6-4318-8378-37271649c3ae",
-      "date": "2019-11-10T21:49:32.373Z"
     }
   ],
   "categories": [

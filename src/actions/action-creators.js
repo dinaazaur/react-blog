@@ -80,7 +80,7 @@ export const fetchComments = (blogService, postId) => ({
 
 export const fetchDeleteItem = (blogService, id, postId = null, type = 'posts', comments = null) => dispatch => {
   dispatch({
-    type: type === 'post' ? FETCH_POST_DELETE : FETCH_COMMENT_DELETE,
+    type: type === 'posts' ? FETCH_POST_DELETE : FETCH_COMMENT_DELETE,
     payload: { id, postId },
     serviceRequest: 'delete',
     callAPI: `${ type }/${ id }`,
