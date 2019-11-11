@@ -19,7 +19,7 @@ import {
 } from "../constants"
 import uuid from 'uuid'
 
-// todo manage ac's to categorized folders
+// todo manage actions's to categorized folders
 
 export const onFilterDateChange = (range) => ({
   type: CHANGE_DAY_RANGE,

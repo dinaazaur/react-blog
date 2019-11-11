@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 import Form from './components/form'
 import { withBlogService } from "./components/hoc"
 import { connect } from "react-redux"
-import { fetchCategories } from "./ac"
+import { fetchCategories } from "./actions"
 import Categories from './components/categories'
 import PostPage from "./components/post-page"
 import { postsLoadedSelector } from "./selectors"

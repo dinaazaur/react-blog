@@ -4,13 +4,13 @@ import Comment from "../comment"
 import Loader from "../loader"
 import { compose } from "../../utis"
 import { connect } from "react-redux"
-import { fetchComments, fetchDeleteItem } from "../../ac/action-creators"
+import { fetchComments, fetchDeleteItem } from "../../actions/action-creators"
 import { withBlogService, withErrorBoundary } from "../hoc"
 import CommentsForm from "../form/form"
 import IconButton from "@material-ui/core/IconButton"
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
-import { setEditable } from "../../ac"
+import { setEditable } from "../../actions"
 import { editableSelector } from "../../selectors/selectors"
 
 const CommentsList = ({ isOpen, loadPostComments, id, blogService,

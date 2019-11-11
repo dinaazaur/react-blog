@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Select from 'react-select'
 import { connect } from "react-redux"
 import { postsListSelector, selectedSelector } from "../../selectors"
-import { changeSelection } from "../../ac"
+import { changeSelection } from "../../actions"
 import { NavLink } from 'react-router-dom'
 import { Add as AddIcon } from "@material-ui/icons"
 import Button from "@material-ui/core/Button"

@@ -5,7 +5,7 @@ import Post from "../post"
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from "react-redux"
 import { postsLoadedSelector, postsLoadingSelector } from "../../selectors"
-import { fetchPosts } from "../../ac"
+import { fetchPosts } from "../../actions"
 import { withBlogService, withErrorBoundary } from "../hoc"
 import { compose } from "../../utis"
 import Loader from "../loader"
