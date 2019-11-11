@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import PropTypes from 'prop-types'
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
@@ -56,7 +56,7 @@ const Post = ({ post, singlePost = false, deletePost, blogService, history, edit
   }
 
   const handleEdit = () => {
-    history.push(`/posts/${ id }`)
+    history.push(`/posts/${ id }`, { edit: true })
     editPost()
   }
 
@@ -138,5 +138,6 @@ export default compose(
   ),
   withErrorBoundary,
   withRouter,
-  withBlogService)(
+  withBlogService,
+  memo)(
   Post)
