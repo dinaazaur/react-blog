@@ -81,6 +81,9 @@ const Header = ({ posts, onSelect, selected }) => {
           <Button className={ classes.categoryBtn } variant="outlined">
             <NavLink to='/categories' className={ classes.categoryLink }>Categories</NavLink>
           </Button>
+          <Button className={ classes.categoryBtn } variant="outlined">
+            <NavLink to='/categoriesEdit' className={ classes.categoryLink }>Edit Categories</NavLink>
+          </Button>
           </div>
           <NavLink to='/add' className={ classes.add }>
           <Button variant="contained">

@@ -1,147 +1,55 @@
 {
   "posts": [
     {
-      "title": "minus vero qui",
-      "text": "Voluptas ipsa cupiditate quia eos aut amet et corrupti. Qui aperiam rerum porro aut quia aut enim consequatur minima. Voluptas dolores officia voluptatum. Necessitatibus harum non voluptatem. Similique iure dolor sed.!!!",
-      "author": "Rudy Rogahn",
-      "id": "c860157e-3b69-468a-994a-d69c876eba77",
-      "comments": [],
-      "date": "2019-11-10T21:19:43.496Z",
-      "category": "Back-End"
-    },
-    {
-      "title": "cumque officiis dolore",
-      "text": "A eius voluptatum qui rerum aut tenetur id atque. Voluptas consequatur eaque. Quasi eos illo occaecati voluptas a ut sed. Culpa eligendi sint velit asperiores temporibus et nobis. Vitae molestias deleniti quod accusamus itaque dolores. Iure qui error eligendi recusandae non sit.",
-      "author": "Brad Hammes",
-      "id": "ee83a5ed-f2cd-461c-b125-d9cd51429487",
+      "author": "Some",
+      "title": "Post!",
+      "text": "Heyka",
+      "date": "2019-11-13T13:27:06.472Z",
+      "category": "Front-end",
+      "categoriesId": "4e60bd63-b274-4aae-aa06-78579cea52c3",
+      "id": "28e770bf-e05a-4a49-a87c-ede6b7c5ebfa",
       "comments": [
-        "58dfe534-4011-4872-9387-86bf02dcb436",
-        "656efac4-295a-4c36-91aa-5a1175f4234f",
-        "5bf04030-1148-4945-b166-d79336e278c9"
+        "3fceb82b-abfe-4c4b-b2f2-83ee4409023a"
       ]
     },
     {
-      "title": "laboriosam qui facilis",
-      "text": "Error placeat dolor. Alias quisquam velit. Perferendis ipsa ea laboriosam.",
-      "author": "Emery West",
-      "id": "2fe69cfd-73ce-42ff-b6bc-f1ba62126643",
-      "comments": [
-        "1d451bc3-937b-47c3-9a83-9b273bc2bb8d",
-        "cad2ce2a-6745-4a47-b1c6-f79d3be7cd5a"
-      ]
-    },
-    {
-      "author": "Doem",
-      "title": "Dreoe",
-      "text": "DWadwad",
-      "date": "2019-11-10T21:47:35.642Z",
-      "category": "Front-End",
-      "id": "e7b381b9-0215-41bc-90cd-749f27a752e3",
+      "author": "Another",
+      "title": "Post",
+      "text": "Dwee",
+      "date": "2019-11-13T13:25:38.033Z",
+      "category": "Back-end",
+      "categoriesId": "af0a3439-93b7-421d-aa42-16e4da7dcd65",
+      "id": "5e8f0270-da17-4b3b-a6f1-2035b9ef76b5",
       "comments": []
     }
   ],
   "comments": [
     {
-      "title": "cumque officiis dolore",
-      "text": "A eius voluptatum qui rerum aut tenetur id atque. Voluptas consequatur eaque. Quasi eos illo occaecati voluptas a ut sed. Culpa eligendi sint velit asperiores temporibus et nobis. Vitae molestias deleniti quod accusamus itaque dolores. Iure qui error eligendi recusandae non sit.",
-      "author": "Brad Hammes",
-      "id": "656efac4-295a-4c36-91aa-5a1175f4234f",
-      "postId": "ee83a5ed-f2cd-461c-b125-d9cd51429487"
-    },
-    {
-      "title": "cumque officiis dolore",
-      "text": "A eius voluptatum qui rerum aut tenetur id atque. Voluptas consequatur eaque. Quasi eos illo occaecati voluptas a ut sed. Culpa eligendi sint velit asperiores temporibus et nobis. Vitae molestias deleniti quod accusamus itaque dolores. Iure qui error eligendi recusandae non sit.",
-      "author": "Brad Hammes",
-      "id": "5bf04030-1148-4945-b166-d79336e278c9",
-      "postId": "ee83a5ed-f2cd-461c-b125-d9cd51429487"
-    },
-    {
-      "title": "cumque officiis dolore",
-      "text": "A eius voluptatum qui rerum aut tenetur id atque. Voluptas consequatur eaque. Quasi eos illo occaecati voluptas a ut sed. Culpa eligendi sint velit asperiores temporibus et nobis. Vitae molestias deleniti quod accusamus itaque dolores. Iure qui error eligendi recusandae non sit.",
-      "author": "Brad Hammes",
-      "postId": "ee83a5ed-f2cd-461c-b125-d9cd51429487",
-      "id": "58dfe534-4011-4872-9387-86bf02dcb436"
-    },
-    {
-      "title": "laboriosam qui facilis",
-      "text": "Error placeat dolor. Alias quisquam velit. Perferendis ipsa ea laboriosam.",
-      "author": "Emery West",
-      "id": "cad2ce2a-6745-4a47-b1c6-f79d3be7cd5a",
-      "postId": "2fe69cfd-73ce-42ff-b6bc-f1ba62126643"
-    },
-    {
-      "title": "laboriosam qui facilis",
-      "text": "Error placeat dolor. Alias quisquam velit. Perferendis ipsa ea laboriosam.",
-      "author": "Emery West",
-      "postId": "2fe69cfd-73ce-42ff-b6bc-f1ba62126643",
-      "id": "1d451bc3-937b-47c3-9a83-9b273bc2bb8d"
-    },
-    {
-      "author": "31231321312",
-      "title": "3213213123123",
-      "text": "3213123123123",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "cfb2790f-4b86-404c-82d2-105ec0ad70cf",
-      "date": "2019-11-08T13:08:59.219Z"
-    },
-    {
-      "author": "Dude Markudeee",
-      "title": "Fuck My life Bitche",
-      "text": "Dude why are you so stupid",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "dc972d12-8626-44a4-89a5-3946be753aa4",
-      "date": "2019-11-08T15:43:36.433Z",
-      "body": {
-        "author": "Dude Markude",
-        "title": "Fuck My life Bitche33",
-        "text": "Deuda ke k k ewa op",
-        "postId": "c860157e-3b69-468a-994a-d69c876eba77"
-      }
-    },
-    {
-      "author": "32131231232",
-      "title": "3213123123",
-      "text": "3213123123121",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "2e864560-02c2-4ed5-bfa7-5e6977d3b5be",
-      "date": "2019-11-08T16:51:22.974Z"
-    },
-    {
-      "author": "wadawdawdd",
-      "title": "awdawdawawd",
-      "text": "dwdawdawdwad",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "cc09b9f7-13ee-427d-a430-5e63309f70ff",
-      "date": "2019-11-08T18:30:31.753Z"
-    },
-    {
-      "author": "32131231231",
-      "title": "32131231231",
-      "text": "321312312321",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "e4c8366a-11a3-416c-b3e2-55367c4a73c8",
-      "date": "2019-11-08T20:46:49.238Z"
-    },
-    {
-      "author": "3213213123",
-      "title": "123123123321312",
-      "text": "321312312321",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "d6f580e6-57b2-4f16-93d2-4bdb312ff430",
-      "date": "2019-11-08T21:08:42.541Z"
-    },
-    {
-      "author": "Dred Mord Ded",
+      "author": "Dredomon",
       "title": "Trulala Da",
-      "text": "Dade oe ",
-      "postId": "c860157e-3b69-468a-994a-d69c876eba77",
-      "id": "d1872e9b-3f11-48fd-a33d-9c6b7eb5b4d1",
-      "date": "2019-11-10T13:18:35.802Z"
+      "text": "dwadaw",
+      "postId": "28e770bf-e05a-4a49-a87c-ede6b7c5ebfa",
+      "id": "1de88504-3b4b-45fd-bc92-4d04bf3aa668",
+      "date": "2019-11-13T13:27:03.189Z"
+    },
+    {
+      "author": "Dredomon",
+      "title": "Trulala Da",
+      "text": "dwadwa!",
+      "postId": "28e770bf-e05a-4a49-a87c-ede6b7c5ebfa",
+      "id": "3fceb82b-abfe-4c4b-b2f2-83ee4409023a",
+      "date": "2019-11-13T13:28:40.139Z"
     }
   ],
   "categories": [
-    "Front-End",
-    "Back-End"
+    {
+      "id": "4e60bd63-b274-4aae-aa06-78579cea52c3",
+      "category": "Front-end"
+    },
+    {
+      "id": "af0a3439-93b7-421d-aa42-16e4da7dcd65",
+      "category": "Back-end"
+    }
   ],
   "profile": {
     "name": "typicode"

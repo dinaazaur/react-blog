@@ -13,7 +13,9 @@ import {
   addSingleLoadedPost,
   fetchFiltratedPosts,
   addLoadedCategory,
-  setEditablePost
+  setEditablePost,
+  fetchAddCategory,
+  fetchDeleteCategory
 } from "./action-creators"
 
 export {
@@ -31,5 +33,7 @@ export {
   addSingleLoadedPost,
   fetchFiltratedPosts,
   addLoadedCategory,
-  setEditablePost
+  setEditablePost,
+  fetchAddCategory,
+  fetchDeleteCategory
 }

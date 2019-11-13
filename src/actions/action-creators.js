@@ -15,7 +15,9 @@ import {
   FETCH_POST,
   ADD_SINGLE_LOADED_POST,
   ADD_LOADED_CATEGORY,
-  SET_EDITABLE_POST
+  SET_EDITABLE_POST,
+  FETCH_ADD_CATEGORY,
+  FETCH_CATEGORY_DELETE
 } from "../constants"
 import uuid from 'uuid'
 
@@ -155,6 +157,28 @@ export const addLoadedCategory = category => ({
   type: ADD_LOADED_CATEGORY,
   payload: { category }
 })
+
+export const fetchAddCategory = (blogService, categories) => dispatch => {
+  const body = { id: uuid.v4(), category: categories }
+
+  dispatch({
+    type: FETCH_ADD_CATEGORY,
+    data: 'categories',
+    serviceRequest: 'postItem',
+    callAPI: body,
+    additionAPI: null,
+    blogService
+  })
+}
+
+export const fetchDeleteCategory = (blogService, id) => ({
+  type: FETCH_CATEGORY_DELETE,
+  payload: { id },
+  serviceRequest: 'delete',
+  callAPI: `categories/${ id }`,
+  blogService,
+})
+
 
 export const addSingleLoadedPost = postId => ({
   type: ADD_SINGLE_LOADED_POST,

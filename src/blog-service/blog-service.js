@@ -70,6 +70,7 @@ export default class BlogService {
     }
   }
 
+
   message(e) {
     console.log('---', e)
   }

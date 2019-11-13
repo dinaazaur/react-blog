@@ -2,7 +2,7 @@ import {
   _FAILURE,
   _REQUEST,
   _SUCCESS, ADD_SINGLE_LOADED_POST,
-  FETCH_ADD_COMMENT, FETCH_ADD_POST, FETCH_CATEGORIZED_POSTS,
+  FETCH_ADD_COMMENT, FETCH_ADD_POST, FETCH_CATEGORIZED_POSTS, FETCH_CATEGORY_DELETE,
   FETCH_COMMENT_DELETE,
   FETCH_COMMENTS, FETCH_EDIT_POST, FETCH_POST,
   FETCH_POST_DELETE,
@@ -20,6 +20,7 @@ const PostsRecord = Record({
   date: null,
   editable: false,
   comments: [],
+  categoriesId: null,
   commentsLoading: false,
   commentsLoaded: false
 })
@@ -68,6 +69,9 @@ export default (state = defaultState(), action) => {
     case FETCH_POST_DELETE + _SUCCESS:
       return state.deleteIn(['entities',payload.id])
 
+    case FETCH_CATEGORY_DELETE + _SUCCESS:
+      return state.update('entities',
+        entity => entity.filter((e, v) => v.categoriesId === payload.id))
 
     case ADD_SINGLE_LOADED_POST:
       return state.update('loadedSinglePosts', loadedPosts => {

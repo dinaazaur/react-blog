@@ -59,8 +59,8 @@ const Form = ({
       >
         <option value="none">none</option>
         {
-          categories.map(category => (
-            <option key={ category } value={ category }>{ category }</option>
+          categories.map(({category, id}) => (
+            <option key={id} value={category}>{category}</option>
           ))
         }
       </NativeSelect>
@@ -68,10 +68,13 @@ const Form = ({
 
   const handleSubmit = e => {
     e.preventDefault()
+
+    const category = postForm && categories.find(({category}) => category === state.category)
+
     postForm
       ? onPostSubmit(blogService, {
         author: state.name, title: state.title,
-        text: state.text, date: state.date, category: state.category
+        text: state.text, date: state.date, category: state.category, categoriesId: category.id
       },
       itemOptions, postId)
       : onCommentSubmit(blogService, { author: state.name, title: state.title, text: state.text, postId },

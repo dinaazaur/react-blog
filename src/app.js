@@ -11,6 +11,7 @@ import Categories from './components/categories'
 import PostPage from "./components/post-page"
 import { postsLoadedSelector } from "./selectors"
 import PostsPage from "./components/posts-page/posts-page"
+import CategoriesForm from "./components/categories-form"
 
 const App = ({ blogService, initialFetch, loaded }) => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const App = ({ blogService, initialFetch, loaded }) => {
         <Route path='/add' render={ () => <Form postForm/> }/>
         <Route path='/categories' component={ Categories }/>
         <Route path='/posts' exact component={ PostsPage }/>
+        <Route path='/categoriesEdit' component={CategoriesForm}/>
         <Route path='/posts/:id' component={ PostPage }/>
         <Route render={ () => <h2>404 page not found</h2> }/>
       </Switch>
